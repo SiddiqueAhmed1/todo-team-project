@@ -124,13 +124,13 @@ root/
 
 ## 📦 Scripts
 
-# Start both frontend & backend in development mode
+### Start both frontend & backend in development mode
 npm run dev
 
-# Run backend only
+### Run backend only
 npm run server
 
-# Run frontend only
+### Run frontend only
 cd client && npm run dev
 
 🧑‍💻 Contributors
