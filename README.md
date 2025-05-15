@@ -11,6 +11,7 @@ A full-stack Todo management app Dozy built for task coordination. This applicat
 
 - [View UI Design on Figma](https://www.figma.com/design/T9DqrMrrgfE0uuJ3IcYteM/To-do-List-Web-App-Design--Community-?m=auto&is-community-duplicate=1&fuid=1253275827982167590)
 ---
+![App Screenshot](https://i.imgur.com/Q2GHTvT.png)
 
 ## ⚙️ Tech Stack
 
@@ -90,32 +91,32 @@ Authentication is implemented using **JWT (JSON Web Tokens)** and **bcrypt** for
 
 ## 📁 Project Structure
 
+```text
 root/
 │
-├── client/ # React frontend (Vite)
-│ ├── src/
-│ │ ├── components/
-│ │ ├── redux/
-│ │ ├── pages/
-│ │ ├── routes/
-│ │ └── App.jsx
-│ └── tailwind.config.js
+├── client/                 # React frontend (Vite)
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   └── App.jsx
+│   └── tailwind.config.js
 │
-├── server/ # Express backend
-│ ├── controllers/
-│ ├── middleware/
-│ ├── config/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ └── server.js
-│ └── app.js
+├── server/                 # Express backend
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   └── server.js
 │
 ├── .env
-├── package.json # Root script with concurrently
+├── package.json            # Root script with concurrently
 └── README.md
 
 
+```
 ---
 
 ## 📤 File Upload & Email
@@ -135,6 +136,30 @@ npm run server
 
 ### Run frontend only
 cd client && npm run dev
+
+## Changelog
+### Version number v1.0.0
+### Release date -- -- --
+
+
+### [1.0.0] - 2025-05-15
+### ✅ Added – new features
+
+### 🛠️ Fixed – bug fixes
+- screenshoot image & file structure bug fixed - 2025-05-15
+
+### 🔄 Changed – improvements or updates
+- Git repository created - 2025-05-13
+- Readme file created - 2025-05-13
+- Update readme file screenshoot image & file structure - 2025-05-15
+- main, dev , rohan & development branch created - 2025-05-15
+- main branch readme file updated from dev branch. Rohan branch created frontend structure. - 2025-05-15
+
+### ❌ Removed – deprecated or deleted features
+
+### ⚠️ Security – security patches
+
+
 
 🧑‍💻 Contributors
 ScriptVolt Management Team
