@@ -137,22 +137,28 @@ npm run server
 ### Run frontend only
 cd client && npm run dev
 
-# Changelog
-# Version number v1.0.0
-# Release date -- -- --
+## Changelog
+### Version number v1.0.0
+### Release date -- -- --
 
 
-## [1.0.0] - 2025-05-15
+### [1.0.0] - 2025-05-15
 ### ✅ Added – new features
 
 ### 🛠️ Fixed – bug fixes
-- Bug in todo update logic when marking as complete
+- screenshoot image & file structure bug fixed - 2025-05-15
 
 ### 🔄 Changed – improvements or updates
+- Git repository created - 2025-05-13
+- Readme file created - 2025-05-13
+- Update readme file screenshoot image & file structure - 2025-05-15
+- main, dev , rohan & development branch created - 2025-05-15
+- main branch readme file updated from dev branch. Rohan branch created frontend structure. - 2025-05-15
 
 ### ❌ Removed – deprecated or deleted features
 
 ### ⚠️ Security – security patches
+
 
 
 🧑‍💻 Contributors
