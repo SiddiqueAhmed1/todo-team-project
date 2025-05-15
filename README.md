@@ -90,30 +90,30 @@ Authentication is implemented using **JWT (JSON Web Tokens)** and **bcrypt** for
 
 ## 📁 Project Structure
 
+```text
 root/
 │
-├── client/ # React frontend (Vite)
-│ ├── src/
-│ │ ├── components/
-│ │ ├── redux/
-│ │ ├── pages/
-│ │ ├── routes/
-│ │ └── App.jsx
-│ └── tailwind.config.js
+├── client/                 # React frontend (Vite)
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   └── App.jsx
+│   └── tailwind.config.js
 │
-├── server/ # Express backend
-│ ├── controllers/
-│ ├── middleware/
-│ ├── config/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ └── server.js
-│ └── app.js
+├── server/                 # Express backend
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   └── server.js
 │
 ├── .env
-├── package.json # Root script with concurrently
+├── package.json            # Root script with concurrently
 └── README.md
+
 
 
 ---
@@ -135,6 +135,24 @@ npm run server
 
 ### Run frontend only
 cd client && npm run dev
+
+# Changelog
+# Version number v1.0.0
+# Release date -- -- --
+
+
+## [1.0.0] - 2025-05-15
+### ✅ Added – new features
+
+### 🛠️ Fixed – bug fixes
+- Bug in todo update logic when marking as complete
+
+### 🔄 Changed – improvements or updates
+
+### ❌ Removed – deprecated or deleted features
+
+### ⚠️ Security – security patches
+
 
 🧑‍💻 Contributors
 ScriptVolt Management Team
