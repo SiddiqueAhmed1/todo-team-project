@@ -11,7 +11,7 @@ A full-stack Todo management app Dozy built for task coordination. This applicat
 
 - [View UI Design on Figma](https://www.figma.com/design/T9DqrMrrgfE0uuJ3IcYteM/To-do-List-Web-App-Design--Community-?m=auto&is-community-duplicate=1&fuid=1253275827982167590)
 ---
-![App Screenshot]([url=https://ibb.co/b5fGDHPs][img]https://i.ibb.co/b5fGDHPs/Screenshot-from-2025-05-15-19-56-29.png[/img][/url])
+![App Screenshot](https://imgur.com/a/U1QIRnD)
 
 ## ⚙️ Tech Stack
 
