@@ -10,6 +10,7 @@ import TaskCategoriesPage from "./pages/TaskCategoriesPage";
 import ViewTaskPage from "./pages/ViewTaskPage";
 import VitalTaskPage from "./pages/VitalTaskPage";
 import AccountInfoPage from "./pages/AccountInfoPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
       <Route path="/help" element={<HelpPage />} />
       <Route path="/view-task/:id" element={<ViewTaskPage />} />
       <Route path="/account-info" element={<AccountInfoPage />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };
