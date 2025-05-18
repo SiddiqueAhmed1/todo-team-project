@@ -1,0 +1,168 @@
+[33mcommit 2ee19aa7424a94b1bebc119482c2f347d4645584[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 80e5bb3 ea501e8
+Author: Md. Abu Bakar Siddique <136806245+SiddiqueAhmed1@users.noreply.github.com>
+Date:   Sat May 17 20:25:56 2025 +0600
+
+    Merge pull request #6 from SiddiqueAhmed1/najib
+    
+    application backend base add
+
+[33mcommit ea501e8777559ef481808ca1f3b6c6d7a83e6c1c[m[33m ([m[1;31morigin/najib[m[33m)[m
+Author: developernajib <developernajib@gmail.com>
+Date:   Fri May 16 14:10:33 2025 +0600
+
+    authentication add with jwt
+
+[33mcommit f478b9108171376272188a65c353c58a81fd961b[m
+Author: developernajib <developernajib@gmail.com>
+Date:   Fri May 16 14:08:24 2025 +0600
+
+    backend base add
+
+[33mcommit 80e5bb3396757a73882ae58e7d5eda9e0133f6a5[m
+Merge: 3a4494c 7d40be0
+Author: Dev-Rohan <136685761+Dev-Rohan1@users.noreply.github.com>
+Date:   Fri May 16 09:38:00 2025 +0600
+
+    Merge pull request #5 from SiddiqueAhmed1/rohan
+    
+    create error page and setup error routes
+
+[33mcommit 7d40be006fe6157326422c2dc3a675f1e32d96c7[m[33m ([m[1;31morigin/rohan[m[33m)[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Fri May 16 09:37:11 2025 +0600
+
+    create error page and setup error routes
+
+[33mcommit 3a4494caf5c6d8932c5072c5d169dad626a7fa3d[m
+Merge: 3738746 1e2af96
+Author: MD.BORHAN RABBANI <111993572+rabbaniborhan@users.noreply.github.com>
+Date:   Thu May 15 21:31:21 2025 +0600
+
+    Merge pull request #4 from SiddiqueAhmed1/production
+    
+    Merge pull request #3 from SiddiqueAhmed1/main
+
+[33mcommit 1e2af967c9044797388ca97d43d92542972ca2eb[m[33m ([m[1;31morigin/production[m[33m)[m
+Merge: 3c18a25 3738746
+Author: MD.BORHAN RABBANI <111993572+rabbaniborhan@users.noreply.github.com>
+Date:   Thu May 15 21:30:21 2025 +0600
+
+    Merge pull request #3 from SiddiqueAhmed1/main
+    
+    frontend route setup from rohan
+
+[33mcommit 3738746f71a2f0d75c6ae27ef18b1269bead7030[m
+Merge: 7a00d69 0949231
+Author: MD.BORHAN RABBANI <111993572+rabbaniborhan@users.noreply.github.com>
+Date:   Thu May 15 21:25:08 2025 +0600
+
+    Merge pull request #2 from SiddiqueAhmed1/rohan
+    
+    Rohan
+
+[33mcommit 7a00d69dc6b681c6e413856999869b9d10df532e[m[33m ([m[1;33mtag: [m[1;33mv1.0.0[m[33m)[m
+Merge: 89dc84f 3c18a25
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 21:02:11 2025 +0600
+
+    update readme file
+
+[33mcommit 89dc84ffbef245a8b816bd0cde97a3fbefe2c7f8[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 20:50:50 2025 +0600
+
+    changelog information updated 2025-05-15
+
+[33mcommit 7e237ba3249f661fc9366c5a11d20b48b8403f17[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 20:22:11 2025 +0600
+
+    screenshot bug fixed again
+
+[33mcommit 8c0804da07b4a40f51f6d5119d3928fb44078e40[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 20:17:54 2025 +0600
+
+    screenshot bug fixed
+
+[33mcommit 66fd69787f04684c28463253419b02455177eaaf[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 20:15:23 2025 +0600
+
+    App screenshot added
+
+[33mcommit 075e7d950f303b253e338b5251e3fdadaccac200[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 19:50:20 2025 +0600
+
+    project structure bug fixed
+
+[33mcommit b0326fff53f86f15729a066f6f7ab614bd0d7497[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Thu May 15 19:45:07 2025 +0600
+
+    readme file & changelog updated
+
+[33mcommit 0949231bb0815e3e1066515aa28657ebb6032256[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Thu May 15 13:41:25 2025 +0600
+
+    google outfit font setup
+
+[33mcommit c55825f1b6fa13607f3150b5dd358684d4ac2762[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Thu May 15 13:40:29 2025 +0600
+
+    create app layout components contexts folder and setup context api
+
+[33mcommit 1cf00d40e36c5307dfa5100aea107881469f3263[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Thu May 15 13:31:45 2025 +0600
+
+    setup react router dom and setup routes and pages
+
+[33mcommit cf5795ee548d33767babf42ca2358383df1f9f0e[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Thu May 15 11:35:01 2025 +0600
+
+    setup tailwind css
+
+[33mcommit de455fbe41289d2c4a0978d898bf484b51e6c27b[m
+Author: Dev-Rohan1 <mdrohanulhaquerohan368@gmail.com>
+Date:   Thu May 15 11:20:13 2025 +0600
+
+    create vite and setup frontend
+
+[33mcommit 3c18a25127aca6d4ffdb2b86eb0905c9abd28e5f[m
+Merge: 93c26ca 7601340
+Author: MD.BORHAN RABBANI <111993572+rabbaniborhan@users.noreply.github.com>
+Date:   Wed May 14 21:13:34 2025 +0600
+
+    Merge pull request #1 from SiddiqueAhmed1/dev
+    
+    Dev
+
+[33mcommit 7601340d424e867fa18ab3e86d078c906da591e3[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Wed May 14 21:09:45 2025 +0600
+
+    figma file added
+
+[33mcommit 09af73c03c7ab9ad431d115c653b3d2d5c51d4cd[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Wed May 14 20:51:32 2025 +0600
+
+    script title fixed
+
+[33mcommit 2b3a3e930026800645b4c2635c7c9effe5b63e91[m
+Author: nshakib <nazmus.shakib.csr@gmail.com>
+Date:   Wed May 14 20:47:41 2025 +0600
+
+    readme.md file added
+
+[33mcommit 93c26cae37f74e5bb14ee7befaed224f7053cdcc[m
+Author: Siddique Ahmed <developersiddique123@gmail.com>
+Date:   Tue May 13 15:11:36 2025 +0600
+
+    add a text file in new team project
