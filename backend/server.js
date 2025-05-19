@@ -8,6 +8,8 @@ const connectDB = require("@/config/DB");
 const { errorHandler } = require("@/Handler/ErrorHandler");
 const authRoutes = require("@/Routes/AuthRoutes");
 
+console.log(SERVER_PORT);
+
 // Connect to database
 connectDB();
 
@@ -23,7 +25,7 @@ app.use("/auth", authRoutes);
 // @route   GET /test
 // @access  Public
 app.get("/test", (req, res) => {
-	res.send("Test route is working!");
+  res.send("Test route is working!");
 });
 
 // Error handling middleware
@@ -31,12 +33,12 @@ app.use(errorHandler);
 
 // Start the server based on the environment
 if (
-	process.env.NODE_ENV === "local" ||
-	process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === "local" ||
+  process.env.NODE_ENV === "development"
 ) {
-	app.listen(SERVER_PORT, () => {
-		console.log(`Server is running on http://localhost:${SERVER_PORT}`);
-	});
+  app.listen(SERVER_PORT, () => {
+    console.log(`Server is running on http://localhost:${SERVER_PORT}`);
+  });
 } else {
-	app.listen(SERVER_PORT);
+  app.listen(SERVER_PORT);
 }
