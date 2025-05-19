@@ -2,17 +2,13 @@
 const mongoose = require('mongoose');
 
 const vitalTaskSchema = new mongoose.Schema({
-  title: {
+ title: {
     type: String,
-    required: true,
-  },
-  objective: {
-    type: String,
-    required: false,
+    required: [true, 'Title is required!']
   },
   description: {
     type: String,
-    required: true,
+    required: [true, 'Description is required!']
   },
   priority: {
     type: String,
@@ -25,17 +21,17 @@ const vitalTaskSchema = new mongoose.Schema({
     default: 'Not Started',
   },
   assignee: {
-    type: String, // You can replace with ObjectId if users are in DB
-    required: false,
+    type: mongoose.Types.ObjectId,
+    required: [true, 'Assignee is required!'],
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  deadline: {
-    type: String, // or Date if you want full time support
-    default: 'End of Day',
-  },
+  lastUpdatedAt: {
+    type: Date,
+    default: Date.now,
+  }
   thumbnail: {
     type: String, // URL of task image (optional)
   }
