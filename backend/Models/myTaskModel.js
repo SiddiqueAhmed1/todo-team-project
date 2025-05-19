@@ -39,6 +39,6 @@ const myTaskSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Task = mongoose.model('vitalTasks', myTaskSchema);
+const Task = mongoose.model('myTasks', myTaskSchema);
 
 module.exports = Task;
