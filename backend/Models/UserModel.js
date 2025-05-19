@@ -10,6 +10,12 @@ const userSchema = mongoose.Schema(
 			required: [true, "Name is required"],
 			trim: true,
 		},
+		username: {
+			type: String,
+			required: [true, "Username is required"],
+			lowercase: true,
+			unique: true
+		},
 		email: {
 			type: String,
 			required: [true, "Email is required"],
@@ -20,6 +26,10 @@ const userSchema = mongoose.Schema(
 				/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
 				"Please enter a valid email address",
 			],
+		},
+		contactNumber: {
+			type: Number,
+			unique: true
 		},
 		password: {
 			type: String,
