@@ -36,12 +36,11 @@ const myTaskSchema = new mongoose.Schema({
     type: String, // or Date if you want full time support
     default: 'End of Day',
   },
-  notes: {
-    type: [String], // Additional notes
-  },
   thumbnail: {
     type: String, // URL of task image (optional)
   }
+}, {
+  timestamps: true
 });
 
 const Task = mongoose.model('Task', myTaskSchema);
