@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 
 const taskCategorySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Category name is required!']
+  },
   type: {
     type: String,
     enum: ['status', 'priority'],
-    required: [true, 'Type is required!']
   },
   value: {
     type: String,
-    required: [true, 'Value is required!']
   }
 });
 
