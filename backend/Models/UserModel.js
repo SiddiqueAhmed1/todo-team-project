@@ -39,21 +39,8 @@ const userSchema = mongoose.Schema(
 			required: [true, "Password is required"],
 			minlength: [6, "Password must be at least 6 characters"],
 		},
-		myTasks: 
-           [
-			{
-				type: mongoose.Types.ObjectId,
-				unique: true
-			}
-
-		   ],
-		   vitalTasks: 
-           [
-			{
-				type: mongoose.Types.ObjectIdc,
-				unique: true
-			}
-		   ],
+		myTasks: [{type: mongoose.Types.ObjectId, unique: true}],
+	    vitalTasks:[{type: mongoose.Types.ObjectIdc, unique: true}],
 		role: {
 			type: String,
 			enum: Object.values(UserRole),
