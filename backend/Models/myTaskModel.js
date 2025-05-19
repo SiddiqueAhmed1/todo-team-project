@@ -31,7 +31,7 @@ const myTasksSchema = new mongoose.Schema({
   lastUpdatedAt: {
     type: Date,
     default: Date.now,
-  }
+  },
   thumbnail: {
     type: String, // URL of task image (optional)
   }
