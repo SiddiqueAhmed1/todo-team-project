@@ -24,6 +24,10 @@ const myTasksSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     required: [true, 'Assignee is required!'],
   },
+  taskType: {
+    type: String,
+    enum: ["myTask", "vitalTask"]
+  },
   createdAt: {
     type: Date,
     default: Date.now,
