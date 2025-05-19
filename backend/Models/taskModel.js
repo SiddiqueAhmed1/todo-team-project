@@ -12,13 +12,9 @@ const myTasksSchema = new mongoose.Schema({
   },
   priority: {
     type: String,
-    enum: ['Low', 'Moderate', 'High', 'Extreme'],
-    default: 'Low',
   },
   status: {
     type: String,
-    enum: ['Not Started', 'In Progress', 'Completed'],
-    default: 'Not Started',
   },
   assignee: {
     type: mongoose.Types.ObjectId,
