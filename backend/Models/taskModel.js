@@ -26,7 +26,8 @@ const myTasksSchema = new mongoose.Schema({
   },
   taskType: {
     type: String,
-    enum: ["myTask", "vitalTask"]
+    enum: ["myTask", "vitalTask"],
+    required: [true, 'Task type is required!']
   },
   createdAt: {
     type: Date,
