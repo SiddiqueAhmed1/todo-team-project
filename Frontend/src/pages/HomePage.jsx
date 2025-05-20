@@ -1,7 +1,13 @@
 import React from "react";
+import AppLayout from "../layout/AppLayout";
+import LoginPage from "../pages/LoginPage";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <LoginPage />
+    </>
+  );
 };
 
 export default HomePage;
