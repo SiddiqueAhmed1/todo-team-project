@@ -13,30 +13,30 @@ const tokenService = new TokenService();
  * @access  Public
  */
 const registerUser = asyncHandler(async (req, res) => {
-	const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-	const user = await authService.registerUser(name, email, password);
+  const user = await authService.registerUser(name, email, password);
 
-	if (user) {
-		const accessToken = tokenService.generateAccessToken(user._id);
-		const refreshToken = tokenService.generateRefreshToken(user._id);
+  if (user) {
+    const accessToken = tokenService.generateAccessToken(user._id);
+    const refreshToken = tokenService.generateRefreshToken(user._id);
 
-		await tokenService.saveRefreshToken(user._id, refreshToken);
+    await tokenService.saveRefreshToken(user._id, refreshToken);
 
-		return ApiResponse.success(
-			res,
-			HttpStatusCode.CREATED,
-			"User registered successfully",
-			{
-				_id: user._id,
-				name: user.name,
-				email: user.email,
-				role: user.role,
-				accessToken,
-				refreshToken,
-			}
-		);
-	}
+    return ApiResponse.success(
+      res,
+      HttpStatusCode.CREATED,
+      "User registered successfully",
+      {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        accessToken,
+        refreshToken,
+      }
+    );
+  }
 });
 
 /**
@@ -45,25 +45,25 @@ const registerUser = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const loginUser = asyncHandler(async (req, res) => {
-	const { email, password } = req.body;
+  const { email, password } = req.body;
 
-	const user = await authService.loginUser(email, password);
+  const user = await authService.loginUser(email, password);
 
-	if (user) {
-		const accessToken = tokenService.generateAccessToken(user._id);
-		const refreshToken = tokenService.generateRefreshToken(user._id);
+  if (user) {
+    const accessToken = tokenService.generateAccessToken(user._id);
+    const refreshToken = tokenService.generateRefreshToken(user._id);
 
-		await tokenService.saveRefreshToken(user._id, refreshToken);
+    await tokenService.saveRefreshToken(user._id, refreshToken);
 
-		return ApiResponse.success(res, HttpStatusCode.OK, "Login successful", {
-			_id: user._id,
-			name: user.name,
-			email: user.email,
-			role: user.role,
-			accessToken,
-			refreshToken,
-		});
-	}
+    return ApiResponse.success(res, HttpStatusCode.OK, "Login successful", {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      accessToken,
+      refreshToken,
+    });
+  }
 });
 
 /**
@@ -72,11 +72,11 @@ const loginUser = asyncHandler(async (req, res) => {
  * @access  Private
  */
 const logoutUser = asyncHandler(async (req, res) => {
-	const userId = req.user._id;
+  const userId = req.user._id;
 
-	await tokenService.removeRefreshToken(userId);
+  await tokenService.removeRefreshToken(userId);
 
-	return ApiResponse.success(res, HttpStatusCode.OK, "Logout successful");
+  return ApiResponse.success(res, HttpStatusCode.OK, "Logout successful");
 });
 
 /**
@@ -85,61 +85,61 @@ const logoutUser = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const refreshToken = asyncHandler(async (req, res) => {
-	const { refreshToken } = req.body;
+  const { refreshToken } = req.body;
 
-	if (!refreshToken) {
-		return ApiResponse.error(
-			res,
-			HttpStatusCode.UNAUTHORIZED,
-			"Refresh token is required",
-			ErrorType.AUTHENTICATION_ERROR
-		);
-	}
+  if (!refreshToken) {
+    return ApiResponse.error(
+      res,
+      HttpStatusCode.UNAUTHORIZED,
+      "Refresh token is required",
+      ErrorType.AUTHENTICATION_ERROR
+    );
+  }
 
-	const userData = await tokenService.verifyRefreshToken(refreshToken);
-	const userRefreshToken = await tokenService.findRefreshToken(
-		userData.id,
-		refreshToken
-	);
+  const userData = await tokenService.verifyRefreshToken(refreshToken);
+  const userRefreshToken = await tokenService.findRefreshToken(
+    userData.id,
+    refreshToken
+  );
 
-	if (!userRefreshToken) {
-		return ApiResponse.error(
-			res,
-			HttpStatusCode.UNAUTHORIZED,
-			"Invalid or expired refresh token",
-			ErrorType.AUTHENTICATION_ERROR
-		);
-	}
+  if (!userRefreshToken) {
+    return ApiResponse.error(
+      res,
+      HttpStatusCode.UNAUTHORIZED,
+      "Invalid or expired refresh token",
+      ErrorType.AUTHENTICATION_ERROR
+    );
+  }
 
-	const user = await authService.findUserById(userData.id);
+  const user = await authService.findUserById(userData.id);
 
-	if (!user) {
-		return ApiResponse.error(
-			res,
-			HttpStatusCode.UNAUTHORIZED,
-			"User not found",
-			ErrorType.AUTHENTICATION_ERROR
-		);
-	}
+  if (!user) {
+    return ApiResponse.error(
+      res,
+      HttpStatusCode.UNAUTHORIZED,
+      "User not found",
+      ErrorType.AUTHENTICATION_ERROR
+    );
+  }
 
-	const accessToken = tokenService.generateAccessToken(user._id);
-	const newRefreshToken = tokenService.generateRefreshToken(user._id);
+  const accessToken = tokenService.generateAccessToken(user._id);
+  const newRefreshToken = tokenService.generateRefreshToken(user._id);
 
-	await tokenService.updateRefreshToken(
-		user._id,
-		refreshToken,
-		newRefreshToken
-	);
+  await tokenService.updateRefreshToken(
+    user._id,
+    refreshToken,
+    newRefreshToken
+  );
 
-	return ApiResponse.success(
-		res,
-		HttpStatusCode.OK,
-		"Token refreshed successfully",
-		{
-			accessToken,
-			refreshToken: newRefreshToken,
-		}
-	);
+  return ApiResponse.success(
+    res,
+    HttpStatusCode.OK,
+    "Token refreshed successfully",
+    {
+      accessToken,
+      refreshToken: newRefreshToken,
+    }
+  );
 });
 
 /**
@@ -148,20 +148,20 @@ const refreshToken = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const forgotPassword = asyncHandler(async (req, res) => {
-	const { email } = req.body;
+  const { email } = req.body;
 
-	/** For testing/demo purposes only, the reset token is returned in the response
-	 *	In a production environment, this should be sent through email or other provider
-	 *	to verify the user's identity and allow them to reset their password securely.
-	 */
-	const resetToken = await authService.requestPasswordReset(email);
+  /** For testing/demo purposes only, the reset token is returned in the response
+   *	In a production environment, this should be sent through email or other provider
+   *	to verify the user's identity and allow them to reset their password securely.
+   */
+  const resetToken = await authService.requestPasswordReset(email);
 
-	return ApiResponse.success(
-		res,
-		HttpStatusCode.OK,
-		"Password reset token generated",
-		{ resetToken }
-	);
+  return ApiResponse.success(
+    res,
+    HttpStatusCode.OK,
+    "Password reset token generated",
+    { resetToken }
+  );
 });
 
 /**
@@ -170,15 +170,15 @@ const forgotPassword = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const resetPassword = asyncHandler(async (req, res) => {
-	const { token, password } = req.body;
+  const { token, password } = req.body;
 
-	await authService.resetPassword(token, password);
+  await authService.resetPassword(token, password);
 
-	return ApiResponse.success(
-		res,
-		HttpStatusCode.OK,
-		"Password reset successful"
-	);
+  return ApiResponse.success(
+    res,
+    HttpStatusCode.OK,
+    "Password reset successful"
+  );
 });
 
 /**
@@ -187,21 +187,21 @@ const resetPassword = asyncHandler(async (req, res) => {
  * @access  Private
  */
 const getUserProfile = asyncHandler(async (req, res) => {
-	const user = await authService.findUserById(req.user._id);
+  const user = await authService.findUserById(req.user._id);
 
-	if (user) {
-		return ApiResponse.success(
-			res,
-			HttpStatusCode.OK,
-			"User profile retrieved",
-			{
-				_id: user._id,
-				name: user.name,
-				email: user.email,
-				role: user.role,
-			}
-		);
-	}
+  if (user) {
+    return ApiResponse.success(
+      res,
+      HttpStatusCode.OK,
+      "User profile retrieved",
+      {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      }
+    );
+  }
 });
 
 /**
@@ -210,37 +210,32 @@ const getUserProfile = asyncHandler(async (req, res) => {
  * @access  Private
  */
 const updateUserProfile = asyncHandler(async (req, res) => {
-	const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-	const updatedUser = await authService.updateUserProfile(
-		req.user._id,
-		name,
-		email,
-		password
-	);
+  const updatedUser = await authService.updateUserProfile(
+    req.user._id,
+    name,
+    email,
+    password
+  );
 
-	if (updatedUser) {
-		return ApiResponse.success(
-			res,
-			HttpStatusCode.OK,
-			"User profile updated",
-			{
-				_id: updatedUser._id,
-				name: updatedUser.name,
-				email: updatedUser.email,
-				role: updatedUser.role,
-			}
-		);
-	}
+  if (updatedUser) {
+    return ApiResponse.success(res, HttpStatusCode.OK, "User profile updated", {
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      role: updatedUser.role,
+    });
+  }
 });
 
 module.exports = {
-	registerUser,
-	loginUser,
-	logoutUser,
-	refreshToken,
-	forgotPassword,
-	resetPassword,
-	getUserProfile,
-	updateUserProfile,
+  registerUser,
+  loginUser,
+  logoutUser,
+  refreshToken,
+  forgotPassword,
+  resetPassword,
+  getUserProfile,
+  updateUserProfile,
 };
