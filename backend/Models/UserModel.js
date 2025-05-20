@@ -5,9 +5,20 @@ const { UserRole, UserStatus } = require("@/utils/Enums");
 
 const userSchema = mongoose.Schema(
 	{
-		name: {
+		firstname: {
 			type: String,
-			required: [true, "Name is required"],
+			required: [true, "First Name is required"],
+			trim: true,
+		},
+		lastname: {
+			type: String,
+			required: [true, "Last Name is required"],
+			trim: true,
+		},
+		username: {
+			type: String,
+			required: [true, "Username is required"],
+			unique: true,
 			trim: true,
 		},
 		email: {
