@@ -146,6 +146,7 @@ cd client && npm run dev
 ### ✅ Added – new features
 
 ### 🛠️ Fixed – bug fixes
+- merge problem akram branch  - 21-05-2025
 - screenshoot image & file structure bug fixed - 2025-05-15
 
 ### 🔄 Changed – improvements or updates
