@@ -7,6 +7,8 @@ const SERVER_PORT = process.env.SERVER_PORT || 5000;
 const connectDB = require("@/config/DB");
 const { errorHandler } = require("@/Handler/ErrorHandler");
 const authRoutes = require("@/Routes/AuthRoutes");
+const color = require("colors");
+const curdRoutes = require("./Routes/curdRoutes");
 
 console.log(SERVER_PORT);
 
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/curd", curdRoutes);
 
 // @desc    Test route
 // @route   GET /test
