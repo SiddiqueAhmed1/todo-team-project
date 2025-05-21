@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
-const config = require("@/config/config");
-const User = require("@/models/userModel");
-const { AppError } = require("@/Handler/errorHandler");
-const { HttpStatusCode, ErrorType } = require("@/utils/enums");
+const config = require("@/config/Config");
+const User = require("@/Models/UserModel");
+const { AppError } = require("@/Handler/ErrorHandler");
+const { HttpStatusCode, ErrorType } = require("@/utils/Enums");
 
 class TokenService {
 	/**
