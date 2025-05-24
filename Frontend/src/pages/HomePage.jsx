@@ -1,11 +1,12 @@
 import React from "react";
-import AppLayout from "../layout/AppLayout";
 import LoginPage from "../pages/LoginPage";
+import DashboardHeader from "../components/DashboardHeader";
 
 const HomePage = () => {
   return (
     <>
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <DashboardHeader />
     </>
   );
 };
