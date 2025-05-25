@@ -1,7 +1,14 @@
 import React from "react";
+import LoginPage from "../pages/LoginPage";
+import DashboardHeader from "../components/DashboardHeader";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      {/* <LoginPage /> */}
+      <DashboardHeader />
+    </>
+  );
 };
 
 export default HomePage;
