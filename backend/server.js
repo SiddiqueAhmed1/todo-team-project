@@ -7,11 +7,13 @@ const SERVER_PORT = process.env.SERVER_PORT || 5000;
 const connectDB = require("@/config/DB");
 const { errorHandler } = require("@/Handler/ErrorHandler");
 const authRoutes = require("@/Routes/AuthRoutes");
+const color = require("colors");
+const curdRoutes = require("./Routes/curdRoutes");
 
 console.log(SERVER_PORT);
 
 // Connect to database
-connectDB();
+// connectDB();
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/curd", curdRoutes);
 
 // @desc    Test route
 // @route   GET /test
@@ -32,13 +35,9 @@ app.get("/test", (req, res) => {
 app.use(errorHandler);
 
 // Start the server based on the environment
-if (
-  process.env.NODE_ENV === "local" ||
-  process.env.NODE_ENV === "development"
-) {
-  app.listen(SERVER_PORT, () => {
-    console.log(`Server is running on http://localhost:${SERVER_PORT}`);
-  });
-} else {
-  app.listen(SERVER_PORT);
-}
+
+app.listen(SERVER_PORT, () => {
+  console.log(
+    `Server is running on http://localhost:${SERVER_PORT}`.bgGreen.black
+  );
+});
