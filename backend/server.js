@@ -9,9 +9,9 @@ const { errorHandler } = require("@/Handler/ErrorHandler");
 const authRoutes = require("@/Routes/AuthRoutes");
 const color = require("colors");
 const todoRoutes = require("./Routes/TodoRoutes");
-// const helmet = require("helmet"); // Security middleware
-// const morgan = require("morgan");
-// const rateLimit = require("express-rate-limit");
+const helmet = require("helmet"); // Security middleware
+const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
 
 // Connect to database
 connectDB();

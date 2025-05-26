@@ -7,7 +7,7 @@ const { HttpStatusCode } = require("@/utils/Enums");
  * @returns {Promise} Mongoose connection
  */
 const connectDB = async () => {
-  // console.log(process.env.MONGO_URI);
+  // console.log(process.env.MONGO_URI); 
 
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
