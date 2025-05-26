@@ -1,4 +1,3 @@
-import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
