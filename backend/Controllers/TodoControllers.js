@@ -1,12 +1,12 @@
-const curdModel = require("../Models/curdModel");
+const Todo = require("../Models/TodoModel");
 
 // Create a new Curd
-const createCurd = async (req, res) => {
+const createTodo = async (req, res) => {
     try {
         const { title, description, status, priority } = req.body;
         const userId = req.user._id;
 
-        const newCurd = await curdModel.create({
+        const newTodo = await Todo.create({
             title,
             description,
             status,
@@ -16,8 +16,8 @@ const createCurd = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message: "Curd created successfully",
-            data: newCurd,
+            message: "Todo created successfully",
+            data: newTodo,
         });
     } catch (error) {
         res.status(500).json({
@@ -27,17 +27,17 @@ const createCurd = async (req, res) => {
     }
 };
 // Get all Curds
-const getAllCurds = async (req, res) => {
+const getAllTodos = async (req, res) => {
     try {
         const userId = req.user._id;
-        const curds = await curdModel
+        const todos = await Todo
             .find({ userId })
             .sort({ createdAt: -1 })
             .populate("userId", "name email");
         res.status(200).json({
             success: true,
-            message: "Curds fetched successfully",
-            data: curds,
+            message: "Todos fetched successfully",
+            data: todos,
         });
     }
     catch (error) {
@@ -49,29 +49,29 @@ const getAllCurds = async (req, res) => {
 }
 
 // Update a Curd
-const updateCurd = async (req, res) => {
+const updateTodo = async (req, res) => {
     try {
         const { title, description, status, priority } = req.body;
         const userId = req.user._id;
         const curdId = req.params.id;
 
-        const updatedCurd = await curdModel.findOneAndUpdate(
+        const updateTodo = await curdModel.findOneAndUpdate(
             { _id: curdId, userId },
             { title, description, status, priority },
             { new: true }
         );
 
-        if (!updatedCurd) {
+        if (!updateTodo) {
             return res.status(404).json({
                 success: false,
-                message: "Curd not found",
+                message: "Todo not found",
             });
         }
 
         res.status(200).json({
             success: true,
-            message: "Curd updated successfully",
-            data: updatedCurd,
+            message: "Todo updated successfully",
+            data: updateTodo,
         });
     } catch (error) {
         res.status(500).json({
@@ -82,27 +82,27 @@ const updateCurd = async (req, res) => {
 }
 
 // Delete a Curd
-const deleteCurd = async (req, res) => {
+const deleteTodo = async (req, res) => {
     try {
         const userId = req.user._id;
-        const curdId = req.params.id;
+        const todoId = req.params.id;
 
-        const deletedCurd = await curdModel.findOneAndDelete({
-            _id: curdId,
+        const deleteTodo = await Todo.findOneAndDelete({
+            _id: todoId,
             userId,
         });
 
-        if (!deletedCurd) {
+        if (!deleteTodo) {
             return res.status(404).json({
                 success: false,
-                message: "Curd not found",
+                message: "Todo not found",
             });
         }
 
         res.status(200).json({
             success: true,
-            message: "Curd deleted successfully",
-            data: deletedCurd,
+            message: "Todo deleted successfully",
+            data: deleteTodo,
         });
     } catch (error) {
         res.status(500).json({
@@ -113,8 +113,8 @@ const deleteCurd = async (req, res) => {
 }
 
 module.exports = {
-    createCurd,
-    getAllCurds,
-    updateCurd,
-    deleteCurd
+    createTodo,
+    getAllTodos,
+    updateTodo,
+    deleteTodo,
 }

@@ -7,11 +7,12 @@ const { HttpStatusCode } = require("@/utils/Enums");
  * @returns {Promise} Mongoose connection
  */
 const connectDB = async () => {
-  console.log(process.env.MONGO_URI);
+  // console.log(process.env.MONGO_URI);
 
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log('\x1b[32m%s\x1b[0m', '[OK] MongoDB Connected Successfully');
+    // console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
     process.exit(1);
