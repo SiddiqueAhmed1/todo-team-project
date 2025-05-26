@@ -15,20 +15,20 @@ const todoSchema = new Schema(
         status: {
             type: String,
             required: true,
-            enum: ['pending', 'in-progress', 'completed'], //Using an enum ensures only valid values are allowed
+            enum: ['pending', 'in-progress', 'completed'], // Using an enum ensures only valid values are allowed
             default: 'pending',
         },
         priority: {
             type: String,
             required: true,
-            enum: ['low', 'normal', 'high'], //Using an enum ensures only valid values are allowed
+            enum: ['low', 'normal', 'high'], // Using an enum ensures only valid values are allowed
             default: 'normal',
         },
         userId: {
             type: Schema.Types.ObjectId,
             required: true,
             ref: 'User',
-            index: true, //for Performance
+            index: true, // for Performance
         },
     },
     {
