@@ -10,10 +10,8 @@ const authRoutes = require("@/Routes/AuthRoutes");
 const color = require("colors");
 const curdRoutes = require("./Routes/curdRoutes");
 
-console.log(SERVER_PORT);
-
 // Connect to database
-// connectDB();
+connectDB();
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
