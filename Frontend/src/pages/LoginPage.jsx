@@ -74,7 +74,7 @@ const LoginPage = () => {
           text: "Welcome back!",
         });
 
-        navigate("/dashboard");
+        navigate("/dashboard/home");
       } else {
         Swal.fire({
           icon: "error",
