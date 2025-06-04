@@ -12,6 +12,7 @@ import VitalTaskPage from "./pages/VitalTaskPage";
 import AccountInfoPage from "./pages/AccountInfoPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./auth/PrivateRoute";
+import Home from "./components/Dashboard/Home";
 
 const App = () => {
 	return (
@@ -19,19 +20,22 @@ const App = () => {
 			<Route path="/" element={<HomePage />} />
 			<Route path="/login" element={<LoginPage />} />
 			<Route path="/register" element={<SignupPage />} />
-			<Route path="/dashboard" element={<DashboardPage />} />
-			<Route
-				path="/vital-task"
-				element={
-					<PrivateRoute>
-						<VitalTaskPage />
-					</PrivateRoute>
-				}
-			/>
-			<Route path="/my-task" element={<MyTaskPage />} />
-			<Route path="/task-categories" element={<TaskCategoriesPage />} />
-			<Route path="/setting" element={<SettingPage />} />
-			<Route path="/help" element={<HelpPage />} />
+			<Route path="/dashboard" element={<DashboardPage />}>
+			<Route path="home" element={<Home />} />
+				<Route
+					path="vital-task"
+					element={
+						<PrivateRoute>
+							<VitalTaskPage />
+						</PrivateRoute>
+					}
+				/>
+				<Route path="my-task" element={<MyTaskPage />} />
+				<Route path="task-categories" element={<TaskCategoriesPage />} />
+				<Route path="setting" element={<SettingPage />} />
+				<Route path="help" element={<HelpPage />} />
+			</Route>
+
 			<Route path="/view-task/:id" element={<ViewTaskPage />} />
 			<Route path="/account-info" element={<AccountInfoPage />} />
 			<Route path="*" element={<ErrorPage />} />

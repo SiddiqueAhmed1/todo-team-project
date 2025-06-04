@@ -31,37 +31,37 @@ export const sidebarLinks = [
   {
     id: 1,
     name: "Dashboard",
-    link: "/dashboard",
+    link: "/dashboard/home",
     icon: LuLayoutDashboard,
   },
   {
     id: 2,
     name: "Vital Task",
-    link: "/vital-task",
+    link: "/dashboard/vital-task",
     icon: FaExclamation,
   },
   {
     id: 3,
     name: "My Task",
-    link: "/my-task",
+    link: "/dashboard/my-task",
     icon: BiTask,
   },
   {
     id: 4,
     name: "Task Categories",
-    link: "/my-task",
+    link: "/dashboard/task-categories",
     icon: BsListTask,
   },
   {
     id: 5,
     name: "Setting",
-    link: "/setting",
+    link: "/dashboard/setting",
     icon: IoMdSettings,
   },
   {
     id: 6,
     name: "Help",
-    link: "/help",
+    link: "/dashboard/help",
     icon: IoIosHelpCircle,
   },
 ];
