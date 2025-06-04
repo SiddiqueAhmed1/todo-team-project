@@ -13,6 +13,7 @@ import AccountInfoPage from "./pages/AccountInfoPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./auth/PrivateRoute";
 import Home from "./components/Dashboard/Home";
+import MyTask from "./components/MyTask";
 
 const App = () => {
 	return (
@@ -30,7 +31,7 @@ const App = () => {
 						</PrivateRoute>
 					}
 				/>
-				<Route path="my-task" element={<MyTaskPage />} />
+				<Route path="my-task" element={<MyTask />} />
 				<Route path="task-categories" element={<TaskCategoriesPage />} />
 				<Route path="setting" element={<SettingPage />} />
 				<Route path="help" element={<HelpPage />} />
