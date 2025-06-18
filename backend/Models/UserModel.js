@@ -5,9 +5,19 @@ const { UserRole, UserStatus } = require("@/utils/Enums");
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "FirstName always is required"],
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: [true, "LastName always is required"],
+      trim: true,
+    },
+    userName: {
+      type: String,
+      required: [true, "UserName is required"],
       trim: true,
     },
     email: {
@@ -23,8 +33,17 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
+      required: [true, "Password always is required"],
+      minlength: [6, "Password must be at least 6 characters"],
+    },
+    confPassword: {
+      type: String,
       required: [true, "Password is required"],
       minlength: [6, "Password must be at least 6 characters"],
+    },
+    confCheck: {
+      type: Boolean,
+      required: [true, "confirm must be required"],
     },
     role: {
       type: String,
@@ -38,9 +57,11 @@ const userSchema = mongoose.Schema(
     },
     refreshToken: {
       type: String,
+      default: "",
     },
     resetPasswordToken: {
       type: String,
+      default: "",
     },
     resetPasswordExpire: {
       type: Date,
@@ -63,7 +84,7 @@ userSchema.pre("save", async function (next) {
 
   // Hash password
   const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  this.password = bcrypt.hash(this.password, salt);
   next();
 });
 

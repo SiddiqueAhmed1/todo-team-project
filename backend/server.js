@@ -19,7 +19,7 @@ connectDB();
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(cors()); // Enable CORS
-app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 //  log incoming requests in dev or prod.
 if (process.env.NODE_ENV === "development") {
@@ -34,21 +34,15 @@ const limiter = rateLimit({
   max: 100, // limit each IP to 100 requests per windowMs
 });
 
-
 // Routes
 app.use("/api", limiter); // Apply rate limiting only to specific routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/todos", todoRoutes);
 
-
 // Security Middleware
 if (process.env.NODE_ENV === "production") {
   app.use(helmet());
 }
-
-;
-
-
 
 // @desc    Test route
 // @route   GET /test
@@ -56,7 +50,6 @@ if (process.env.NODE_ENV === "production") {
 app.get("/test", (req, res) => {
   res.send("Test route is working!");
 });
-
 
 // Error handling middleware
 app.use(errorHandler);
@@ -68,7 +61,9 @@ if (
   process.env.NODE_ENV === "development"
 ) {
   app.listen(SERVER_PORT, () => {
-    console.log(`Server is running on http://localhost:${SERVER_PORT}`.bgGreen.black);
+    console.log(
+      `Server is running on http://localhost:${SERVER_PORT}`.bgGreen.black
+    );
   });
 } else {
   app.listen(SERVER_PORT);

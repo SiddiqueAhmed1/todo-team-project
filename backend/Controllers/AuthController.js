@@ -3,6 +3,7 @@ const { AuthService } = require("@/Services/AuthService");
 const { TokenService } = require("@/Services/TokenService");
 const { HttpStatusCode, ErrorType } = require("@/utils/Enums");
 const { ApiResponse } = require("@/utils/ResponseHandler");
+const User = require("../Models/UserModel");
 
 const authService = new AuthService();
 const tokenService = new TokenService();
@@ -13,9 +14,25 @@ const tokenService = new TokenService();
  * @access  Public
  */
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    confPassword,
+    confCheck,
+  } = req.body;
 
-  const user = await authService.registerUser(name, email, password);
+  const user = await authService.registerUser(
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    confPassword,
+    confCheck
+  );
 
   if (user) {
     const accessToken = tokenService.generateAccessToken(user._id);
@@ -29,7 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
       "User registered successfully",
       {
         _id: user._id,
-        name: user.name,
+        name: user.userName,
         email: user.email,
         role: user.role,
         accessToken,
@@ -37,6 +54,18 @@ const registerUser = asyncHandler(async (req, res) => {
       }
     );
   }
+});
+
+/**
+ * @desc get all user
+ * @router GET /api/auth/getUser
+ * @access  public
+ *  */
+
+const getAllUser = asyncHandler(async (req, res) => {
+  const user = await User.find();
+
+  return user;
 });
 
 /**
@@ -238,4 +267,5 @@ module.exports = {
   resetPassword,
   getUserProfile,
   updateUserProfile,
+  getAllUser,
 };
