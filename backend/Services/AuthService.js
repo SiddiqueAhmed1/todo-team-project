@@ -38,15 +38,23 @@ class AuthService {
         ErrorType.DUPLICATE_ERROR
       );
     }
+    if (confCheck) {
+      throw new AppError(
+        "terms n condition must apply",
+        HttpStatusCode.BAD_REQUEST,
+        ErrorType.DUPLICATE_ERROR
+      );
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPass = bcrypt.hash(password, salt); // ✅
 
     const user = await User.create({
       firstName,
       lastName,
       userName,
       email,
-      password,
-      confPassword,
-      confCheck,
+      password: hashPass,
     });
 
     return user;

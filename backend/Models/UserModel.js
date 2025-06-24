@@ -36,15 +36,15 @@ const userSchema = mongoose.Schema(
       required: [true, "Password always is required"],
       minlength: [6, "Password must be at least 6 characters"],
     },
-    confPassword: {
-      type: String,
-      required: [true, "Password is required"],
-      minlength: [6, "Password must be at least 6 characters"],
-    },
-    confCheck: {
-      type: Boolean,
-      required: [true, "confirm must be required"],
-    },
+    // confPassword: {
+    //   type: String,
+    //   required: [true, "Password is required"],
+    //   minlength: [6, "Password must be at least 6 characters"],
+    // },
+    // confCheck: {
+    //   type: Boolean,
+    //   required: [true, "confirm must be required"],
+    // },
     role: {
       type: String,
       enum: Object.values(UserRole),
@@ -76,17 +76,21 @@ const userSchema = mongoose.Schema(
 );
 
 // Encrypt password before saving
-userSchema.pre("save", async function (next) {
-  // Only hash password if it was modified
-  if (!this.isModified("password")) {
-    return next();
-  }
+// userSchema.pre("save", async function (next) {
+//   // Only hash password if it was modified
+//   if (!this.isModified("password")) {
+//     return next();
+//   }
 
-  // Hash password
-  const salt = await bcrypt.genSalt(10);
-  this.password = bcrypt.hash(this.password, salt);
-  next();
-});
+//   // Hash password
+//   // try {
+//   //   const salt = await bcrypt.genSalt(10);
+//   //   this.password = bcrypt.hash(this.password, salt); // ✅
+//   //   next();
+//   // } catch (err) {
+//   //   next(err);
+//   // }
+// });
 
 // Check if password matches
 userSchema.methods.matchPassword = async function (enteredPassword) {
