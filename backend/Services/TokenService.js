@@ -5,149 +5,146 @@ const { AppError } = require("@/Handler/ErrorHandler");
 const { HttpStatusCode, ErrorType } = require("@/utils/Enums");
 
 class TokenService {
-	/**
-	 * Generate access token
-	 * @param {string} userId
-	 * @returns {string} JWT token
-	 */
-	generateAccessToken(userId) {
-		return jwt.sign({ id: userId }, config.jwt.accessTokenSecret, {
-			expiresIn: config.jwt.accessTokenExpiry,
-		});
-	}
+  /**
+   * Generate access token
+   * @param {string} userId
+   * @returns {string} JWT token
+   */
+  generateAccessToken(userId) {
+    return jwt.sign({ id: userId }, process.env.JWT_ACCESS_SECRET, {
+      expiresIn: process.env.JWT_ACCESS_EXPIRY,
+    });
+  }
 
-	/**
-	 * Generate refresh token
-	 * @param {string} userId
-	 * @returns {string} JWT token
-	 */
-	generateRefreshToken(userId) {
-		return jwt.sign({ id: userId }, config.jwt.refreshTokenSecret, {
-			expiresIn: config.jwt.refreshTokenExpiry,
-		});
-	}
+  /**
+   * Generate refresh token
+   * @param {string} userId
+   * @returns {string} JWT token
+   */
+  generateRefreshToken(userId) {
+    return jwt.sign({ id: userId }, process.env.JWT_REFRESH_SECRET, {
+      expiresIn: process.env.JWT_REFRESH_EXPIRY,
+    });
+  }
 
-	/**
-	 * Save refresh token to user
-	 * @param {string} userId
-	 * @param {string} refreshToken
-	 * @returns {Promise<User>}
-	 */
-	async saveRefreshToken(userId, refreshToken) {
-		const user = await User.findById(userId);
+  /**
+   * Save refresh token to user
+   * @param {string} userId
+   * @param {string} refreshToken
+   * @returns {Promise<User>}
+   */
+  async saveRefreshToken(userId, refreshToken) {
+    const user = await User.findById(userId);
 
-		if (!user) {
-			throw new AppError(
-				"User not found",
-				HttpStatusCode.NOT_FOUND,
-				ErrorType.NOT_FOUND_ERROR
-			);
-		}
+    if (!user) {
+      throw new AppError(
+        "User not found",
+        HttpStatusCode.NOT_FOUND,
+        ErrorType.NOT_FOUND_ERROR
+      );
+    }
 
-		user.refreshToken = refreshToken;
-		await user.save();
+    user.refreshToken = refreshToken;
+    await user.save();
 
-		return user;
-	}
+    return user;
+  }
 
-	/**
-	 * Remove refresh token from user
-	 * @param {string} userId
-	 * @returns {Promise<User>}
-	 */
-	async removeRefreshToken(userId) {
-		const user = await User.findById(userId);
+  /**
+   * Remove refresh token from user
+   * @param {string} userId
+   * @returns {Promise<User>}
+   */
+  async removeRefreshToken(userId) {
+    const user = await User.findById(userId);
 
-		if (!user) {
-			throw new AppError(
-				"User not found",
-				HttpStatusCode.NOT_FOUND,
-				ErrorType.NOT_FOUND_ERROR
-			);
-		}
+    if (!user) {
+      throw new AppError(
+        "User not found",
+        HttpStatusCode.NOT_FOUND,
+        ErrorType.NOT_FOUND_ERROR
+      );
+    }
 
-		user.refreshToken = null;
-		await user.save();
+    user.refreshToken = null;
+    await user.save();
 
-		return user;
-	}
+    return user;
+  }
 
-	/**
-	 * Find refresh token
-	 * @param {string} userId
-	 * @param {string} refreshToken
-	 * @returns {Promise<string>}
-	 */
-	async findRefreshToken(userId, refreshToken) {
-		const user = await User.findOne({
-			_id: userId,
-			refreshToken,
-		});
+  /**
+   * Find refresh token
+   * @param {string} userId
+   * @param {string} refreshToken
+   * @returns {Promise<string>}
+   */
+  async findRefreshToken(userId, refreshToken) {
+    const user = await User.findOne({
+      _id: userId,
+      refreshToken,
+    });
 
-		if (!user) {
-			return null;
-		}
+    if (!user) {
+      return null;
+    }
 
-		return user.refreshToken;
-	}
+    return user.refreshToken;
+  }
 
-	/**
-	 * Update refresh token
-	 * @param {string} userId
-	 * @param {string} oldRefreshToken
-	 * @param {string} newRefreshToken
-	 * @returns {Promise<User>}
-	 */
-	async updateRefreshToken(userId, oldRefreshToken, newRefreshToken) {
-		const user = await User.findOne({
-			_id: userId,
-			refreshToken: oldRefreshToken,
-		});
+  /**
+   * Update refresh token
+   * @param {string} userId
+   * @param {string} oldRefreshToken
+   * @param {string} newRefreshToken
+   * @returns {Promise<User>}
+   */
+  async updateRefreshToken(userId, oldRefreshToken, newRefreshToken) {
+    const user = await User.findOne({
+      _id: userId,
+      refreshToken: oldRefreshToken,
+    });
 
-		if (!user) {
-			throw new AppError(
-				"Invalid refresh token",
-				HttpStatusCode.UNAUTHORIZED,
-				ErrorType.AUTHENTICATION_ERROR
-			);
-		}
+    if (!user) {
+      throw new AppError(
+        "Invalid refresh token",
+        HttpStatusCode.UNAUTHORIZED,
+        ErrorType.AUTHENTICATION_ERROR
+      );
+    }
 
-		user.refreshToken = newRefreshToken;
-		await user.save();
+    user.refreshToken = newRefreshToken;
+    await user.save();
 
-		return user;
-	}
+    return user;
+  }
 
-	/**
-	 * Verify refresh token
-	 * @param {string} refreshToken
-	 * @returns {object} Decoded token
-	 */
-	async verifyRefreshToken(refreshToken) {
-		try {
-			const decoded = jwt.verify(
-				refreshToken,
-				config.jwt.refreshTokenSecret
-			);
-			return decoded;
-		} catch (error) {
-			if (error.name === "JsonWebTokenError") {
-				throw new AppError(
-					"Invalid refresh token",
-					HttpStatusCode.UNAUTHORIZED,
-					ErrorType.AUTHENTICATION_ERROR
-				);
-			} else if (error.name === "TokenExpiredError") {
-				throw new AppError(
-					"Refresh token expired",
-					HttpStatusCode.UNAUTHORIZED,
-					ErrorType.AUTHENTICATION_ERROR
-				);
-			} else {
-				throw error;
-			}
-		}
-	}
+  /**
+   * Verify refresh token
+   * @param {string} refreshToken
+   * @returns {object} Decoded token
+   */
+  async verifyRefreshToken(refreshToken) {
+    try {
+      const decoded = jwt.verify(refreshToken, config.jwt.refreshTokenSecret);
+      return decoded;
+    } catch (error) {
+      if (error.name === "JsonWebTokenError") {
+        throw new AppError(
+          "Invalid refresh token",
+          HttpStatusCode.UNAUTHORIZED,
+          ErrorType.AUTHENTICATION_ERROR
+        );
+      } else if (error.name === "TokenExpiredError") {
+        throw new AppError(
+          "Refresh token expired",
+          HttpStatusCode.UNAUTHORIZED,
+          ErrorType.AUTHENTICATION_ERROR
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
 }
 
 module.exports = { TokenService };

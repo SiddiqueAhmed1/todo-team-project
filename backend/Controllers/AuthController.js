@@ -86,9 +86,9 @@ const loginUser = asyncHandler(async (req, res) => {
 
     return ApiResponse.success(res, HttpStatusCode.OK, "Login successful", {
       _id: user._id,
-      name: user.name,
       email: user.email,
       role: user.role,
+      password: user.password,
       accessToken,
       refreshToken,
     });

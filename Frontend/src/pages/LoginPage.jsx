@@ -13,7 +13,7 @@ const LoginPage = () => {
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { backendUrl } = useContext(AppContext);
+  // const { backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
 
   const loginHandler = async (e) => {
@@ -55,10 +55,13 @@ const LoginPage = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${backendUrl}/auth/login`, {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `http://localhost:5050/api/v1/auth/login`,
+        {
+          email,
+          password,
+        }
+      );
 
       const { data } = response;
 
@@ -111,6 +114,7 @@ const LoginPage = () => {
             <div className="flex items-center border border-gray-300 rounded-lg px-4 py-2.5 focus-within:border-[#FF9090] transition-colors">
               <MdEmail className="text-gray-500 mr-3 text-lg" />
               <input
+                name="email"
                 type="email"
                 placeholder="Enter Email"
                 className="w-full outline-none text-gray-700 placeholder-gray-400"
@@ -122,6 +126,7 @@ const LoginPage = () => {
             {/* Password Field */}
             <div className="flex items-center border border-gray-300 rounded-lg px-4 py-2.5 focus-within:border-[#FF9090] transition-colors">
               <input
+                name="password"
                 type="password"
                 placeholder="Enter Password"
                 className="w-full outline-none text-gray-700 placeholder-gray-400"
@@ -133,6 +138,7 @@ const LoginPage = () => {
             {/* Terms Checkbox */}
             <div className="flex items-center">
               <input
+                name="checked"
                 type="checkbox"
                 id="terms"
                 className="mr-2 h-4 w-4 accent-[#FF9090]"
